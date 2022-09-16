@@ -44,6 +44,7 @@ def copy_sheet(source_sheet: Worksheet, target_sheet: Worksheet):
 
 def copy_cells(source_sheet: Worksheet, target_sheet: Worksheet):
     """Copies cell contents as well as its properties from source to target sheet."""
+    
     for (row, col), source_cell in source_sheet._cells.items():  #pylint: disable=protected-access
         target_cell: Cell = target_sheet.cell(column=col, row=row)
         source_cell: Cell
@@ -68,6 +69,7 @@ def copy_cells(source_sheet: Worksheet, target_sheet: Worksheet):
 
 def copy_sheet_attributes(source_sheet: Worksheet, target_sheet: Worksheet):
     """Copies sheet attributes from source to target sheet."""
+    
     target_sheet.auto_filter = copy(source_sheet.auto_filter)
     target_sheet.sheet_format = copy(source_sheet.sheet_format)
     target_sheet.sheet_properties = copy(source_sheet.sheet_properties)
@@ -95,6 +97,7 @@ def copy_row_column_dimensions(source_sheet: Worksheet,
 
 def browse_excel(title: str | None = None) -> IO:
     """Prompts user to select .xls or preferably .xlsx file."""
+    
     if title is None:
         title = "Choose a file"
     file = askopenfile(mode='rb',
