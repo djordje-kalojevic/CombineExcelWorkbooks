@@ -53,7 +53,7 @@ def copy_cells(source_sheet: Worksheet, target_sheet: Worksheet, simple_copy: bo
         target_cell._value = source_cell._value  #pylint: disable=protected-access
         target_cell.data_type = source_cell.data_type
 
-        if simple_copy:
+        if not simple_copy:
             if source_cell.has_style:
                 target_cell.font = copy(source_cell.font)
                 target_cell.border = copy(source_cell.border)
@@ -173,7 +173,7 @@ def save_excel(file: Workbook) -> str:
     return file_name
 
 
-def combine_workbooks(simple_copy: bool = True):
+def combine_workbooks(simple_copy: bool = False):
     """Combines two workbooks by copying sheets.
     This is done CELL by CELL and can take a little bit for larger workbooks.\n
     IMPORTANT: for large yet simple files such as CSVs and Datasets,
@@ -228,4 +228,4 @@ def combine_workbooks(simple_copy: bool = True):
 
 
 if __name__ == '__main__':
-    combine_workbooks()
+    combine_workbooks(simple_copy = False)
