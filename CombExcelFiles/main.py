@@ -52,13 +52,13 @@ def copy_cells(source_sheet: Worksheet, target_sheet: Worksheet, simple_copy: bo
         # copies cell content
         target_cell._value = source_cell._value  #pylint: disable=protected-access
         target_cell.data_type = source_cell.data_type
+        target_cell.number_format = copy(source_cell.number_format)
 
         if not simple_copy:
             if source_cell.has_style:
                 target_cell.font = copy(source_cell.font)
                 target_cell.border = copy(source_cell.border)
                 target_cell.fill = copy(source_cell.fill)
-                target_cell.number_format = copy(source_cell.number_format)
                 target_cell.protection = copy(source_cell.protection)
                 target_cell.alignment = copy(source_cell.alignment)
 
