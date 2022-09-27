@@ -189,10 +189,10 @@ def combine_workbooks(simple_copy: bool = False):
     target_file = browse_excel_file(title="Please select the target workbook")
 
 
-    target_workbook: Worksheet = load_workbook(target_file)
+    target_workbook: Workbook = load_workbook(target_file)
 
     for source_file in source_files:
-        source_workbook: Worksheet = load_workbook(source_file)
+        source_workbook: Workbook = load_workbook(source_file)
 
         for sheet_name in source_workbook.sheetnames:
             source_sheet = source_workbook[sheet_name]
