@@ -71,6 +71,7 @@ def copy_cells(source_sheet: Worksheet, target_sheet: Worksheet, simple_copy: bo
 
 def copy_sheet_attributes(source_sheet: Worksheet, target_sheet: Worksheet):
     """Copies sheet attributes from source to target sheet."""
+
     target_sheet.auto_filter = copy(source_sheet.auto_filter)
     target_sheet.sheet_format = copy(source_sheet.sheet_format)
     target_sheet.sheet_properties = copy(source_sheet.sheet_properties)
