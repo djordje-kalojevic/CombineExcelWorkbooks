@@ -45,9 +45,9 @@ def copy_sheet(source_sheet: Worksheet, target_sheet: Worksheet, simple_copy: bo
 def copy_cells(source_sheet: Worksheet, target_sheet: Worksheet, simple_copy: bool):
     """Copies cell contents as well as its properties from source to target sheet."""
 
+    source_cell: Cell
     for (row, col), source_cell in source_sheet._cells.items():  #pylint: disable=protected-access
         target_cell: Cell = target_sheet.cell(column=col, row=row)
-        source_cell: Cell
 
         # copies cell content
         target_cell._value = source_cell._value  #pylint: disable=protected-access
@@ -135,7 +135,7 @@ def browse_excel_file(title="Choose a file") -> str:
     return file
 
 
-def browse_excel_files(title="Choose files") -> tuple[str]:
+def browse_excel_files(title="Choose files") -> tuple[str, ...]:
     """Prompts user to select files for checking.
     Returns the list of files and their directory."""
 
